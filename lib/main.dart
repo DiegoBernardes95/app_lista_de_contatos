@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:lista_de_contatos/page/home_page.dart';
+import 'package:lista_de_contatos/page/splash_screen_page.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -15,15 +15,16 @@ class ListaDeContatos extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.blue,
-          centerTitle: true,
-          elevation: 10,
-        ),
-        primaryColor: Colors.black
+        primaryColor: Colors.white,
+        primarySwatch: Colors.indigo,
+        inputDecorationTheme: const InputDecorationTheme(
+          border: OutlineInputBorder(borderSide: BorderSide()),
+          enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+          labelStyle: TextStyle(color: Colors.white),
+        )
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
+      home: const SplashScreenPage(),
     );
   }
 }
