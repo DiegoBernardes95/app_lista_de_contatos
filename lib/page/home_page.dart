@@ -66,7 +66,6 @@ class _HomePageState extends State<HomePage>{
       ),
 
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         color: Colors.black87,
         child: 
         
@@ -91,6 +90,7 @@ class _HomePageState extends State<HomePage>{
         :
 
         ListView.builder(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           itemCount: _contatos.results.length,
           itemBuilder: (_, index){
             var contato = _contatos.results[index];
@@ -207,7 +207,7 @@ class _HomePageState extends State<HomePage>{
                 ),
 
                 const Divider(color: Colors.white)
-                
+
               ],
             );
           }

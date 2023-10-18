@@ -120,6 +120,7 @@ class _BuscarContatoPage extends State<BuscarContatoPage>{
                   onTap: () async{
                     await Navigator.push(context, MaterialPageRoute(builder: (_) => PerfilContatoPage(id: resultado.objectId)));
                     await carregarDados();
+                    FocusManager.instance.primaryFocus?.unfocus();
                     busca();
                     setState(() {});
                   },
@@ -130,7 +131,7 @@ class _BuscarContatoPage extends State<BuscarContatoPage>{
                       resultado.pathImage == "" ?
 
                       const SizedBox(
-                        width: 100,
+                        width: 80,
                         child: Center(child: FaIcon(FontAwesomeIcons.user, size: 50, color: Colors.white,))
                       )
 
@@ -140,8 +141,8 @@ class _BuscarContatoPage extends State<BuscarContatoPage>{
                         borderRadius: BorderRadius.circular(60),
                         child: Image.file(
                           File(resultado.pathImage),
-                          width: 100,
-                          height: 100, 
+                          width: 80,
+                          height: 80, 
                           fit: BoxFit.cover
                         )
                       ),
@@ -156,7 +157,13 @@ class _BuscarContatoPage extends State<BuscarContatoPage>{
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const SizedBox(height: 9),
-                              Text(resultado.telefone, style: GoogleFonts.almarai(color: Colors.white, fontSize: 17)),
+                              Row(
+                                children: [
+                                  const FaIcon(FontAwesomeIcons.phone, color: Colors.green,),
+                                  const SizedBox(width: 10),
+                                  Text(resultado.telefone, style: GoogleFonts.almarai(color: Colors.white, fontSize: 17)),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -164,7 +171,7 @@ class _BuscarContatoPage extends State<BuscarContatoPage>{
                     ],
                   ),
                 ),
-                const SizedBox(height: 20)
+                const SizedBox(height: 25)
               ],
             );
         }),

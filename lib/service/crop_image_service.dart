@@ -18,8 +18,9 @@ class CropImageService{
       uiSettings: [
         AndroidUiSettings(
             toolbarTitle: 'Cropper',
-            toolbarColor: Colors.deepOrange,
-            toolbarWidgetColor: Colors.white,
+            toolbarColor: Colors.indigo,
+            toolbarWidgetColor: Colors.white, 
+            activeControlsWidgetColor: Colors.indigo,
             initAspectRatio: CropAspectRatioPreset.original,
             lockAspectRatio: false),
         IOSUiSettings(

@@ -23,6 +23,7 @@ class _EditarContatoPageState extends State<EditarContatoPage> {
   var nomeController = TextEditingController(text: "");
   var telefoneController = TextEditingController(text: "");
   var emailController = TextEditingController(text: "");
+  var carregando = false;
   var imagemPath = "";
   XFile? photo;
 
@@ -33,12 +34,17 @@ class _EditarContatoPageState extends State<EditarContatoPage> {
   }
 
   carregarDados() async{
+    setState(() {
+      carregando = true;
+    });
     contatoPorId = await contatoRepository.obterContatoPorId(widget.id);
     nomeController.text = contatoPorId.nome;
     telefoneController.text = contatoPorId.telefone;
     emailController.text = contatoPorId.email;
     imagemPath = contatoPorId.pathImage;
-    setState((){});
+    setState(() {
+      carregando = false;
+    });
   }
 
   setValues(){
@@ -66,7 +72,19 @@ class _EditarContatoPageState extends State<EditarContatoPage> {
     return Scaffold(
       body: Container(
         color: Colors.black87,
-        child: ListView(
+        child: 
+
+        carregando ?
+
+        const Expanded(
+          child: Center(
+            child: CircularProgressIndicator(),
+          )
+        )
+
+        :
+        
+        ListView(
           children: [
             // ignore: sized_box_for_whitespace
             Container(
@@ -79,7 +97,6 @@ class _EditarContatoPageState extends State<EditarContatoPage> {
 
             const SizedBox(height: 60),
     
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22),
               child: Row(

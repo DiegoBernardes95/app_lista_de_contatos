@@ -26,7 +26,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
               content: const Text("O que deseja fazer?"),
               actions: [
                 TextButton(
-                  onPressed: () async {
+                  onPressed: () {
                     if(widget.imagemPath == ""){
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
@@ -42,7 +42,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
                       );
                       Navigator.pop(context);
                     } else {
-                      await CropImageService.cropImage(XFile(widget.imagemPath), widget.imagemPath, widget.updateImage);
+                      CropImageService.cropImage(XFile(widget.imagemPath), widget.imagemPath, widget.updateImage);
                       // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                     }
@@ -54,7 +54,7 @@ class _CustomIconButtonState extends State<CustomIconButton> {
                     widget.carregarImagem();
                     Navigator.pop(context);
                   }, 
-                  child: const Text('Nova foto')
+                  child: const Text('Nova Foto')
                 ),
                 TextButton(
                   onPressed: (){
